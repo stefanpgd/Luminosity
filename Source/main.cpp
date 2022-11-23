@@ -1,15 +1,9 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
 #include <iostream>
 
 const int windowWidth = 1080;
 const int windowHeight = 720;
 
-static void GLFWErrorCallback(int error, const char* description)
-{
-	fprintf(stderr, "GLFW Error %d: %s\n", error, description);
-}
 
 int main(void)
 {
