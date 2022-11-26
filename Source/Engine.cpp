@@ -12,6 +12,7 @@
 #include "Graphics/Model.h"
 #include "Graphics/Transform.h"
 #include "Graphics/ShaderProgram.h"
+#include "Camera.h"
 
 static void GLFWErrorCallback(int error, const char* description)
 {
@@ -32,8 +33,10 @@ void Engine::Run()
 	GLFWwindow* window = renderer->GetWindow();
 
 	Transform transform;
-	Model model("Assets/Models/Sphere/sphere.gltf", &transform);
+	Model model("Assets/Models/Sphere/Sphere.gltf", &transform);
 	ShaderProgram shader("color.vert", "color.frag");
+	Camera camera(glm::vec3(0.0, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), 
+		renderer->GetWindowWidth(), renderer->GetWindowHeight());
 
 	while (isRunning)
 	{
@@ -41,13 +44,14 @@ void Engine::Run()
 
 		// Input // 
 		glfwPollEvents();
-
-		if (glfwWindowShouldClose(window))
+		if (glfwWindowShouldClose(window) || glfwGetKey(window, GLFW_KEY_ESCAPE))
 		{
 			isRunning = false;
 		}
 
+		camera.Update(renderer->GetWindow(), 0.016);
 		shader.Bind();
+		shader.SetMat4("VPMatrix", camera.GetViewProjectionMatrix());
 		model.Draw(&shader);
 
 		renderer->RenderFrame();

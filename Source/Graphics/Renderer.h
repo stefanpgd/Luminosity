@@ -9,6 +9,8 @@ public:
 	Renderer(const std::string& windowName);
 
 	GLFWwindow* GetWindow();
+	unsigned int GetWindowWidth();
+	unsigned int GetWindowHeight();
 
 	void StartFrame();
 	void RenderFrame();

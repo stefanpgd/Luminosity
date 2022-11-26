@@ -13,16 +13,16 @@ Model::Model(const std::string& filePath, Transform* transform)
 	this->transform = transform;
 	this->filePath = filePath;
 
-	//for(int i = 0; i < ModelArchive.size(); i++)
-	//{
-	//	// Check if a model has been loaded in before, if so
-	//	// then copy the already loaded in mesh data.
-	//	if(filePath == ModelArchive[i]->filePath)
-	//	{
-	//		meshes = ModelArchive[i]->meshes;
-	//		return;
-	//	}
-	//}
+	for(int i = 0; i < ModelArchive.size(); i++)
+	{
+		// Check if a model has been loaded in before, if so
+		// then copy the already loaded in mesh data.
+		if(filePath == ModelArchive[i]->filePath)
+		{
+			meshes = ModelArchive[i]->meshes;
+			return;
+		}
+	}
 
 	Assimp::Importer import;
 	unsigned int processFlags =
@@ -56,7 +56,7 @@ Model::Model(const std::string& filePath, Transform* transform)
 
 	ProcessNode(scene->mRootNode, scene);
 
-	//ModelArchive.push_back(this);
+	ModelArchive.push_back(this);
 }
 
 void Model::Update()

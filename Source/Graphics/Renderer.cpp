@@ -20,12 +20,22 @@ Renderer::Renderer(const std::string& windowName)
 	}
 
 	glViewport(0, 0, windowWidth, windowHeight);
-	glEnable(GL_DEPTH);
+	glEnable(GL_DEPTH_TEST);
 }
 
 GLFWwindow* Renderer::GetWindow()
 {
 	return window;
+}
+
+unsigned int Renderer::GetWindowWidth()
+{
+	return windowWidth;
+}
+
+unsigned int Renderer::GetWindowHeight()
+{
+	return windowHeight;
 }
 
 void Renderer::StartFrame()
