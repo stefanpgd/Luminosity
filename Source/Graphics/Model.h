@@ -4,6 +4,7 @@
 
 class ShaderProgram;
 class Mesh;
+class Transform;
 
 // Assimp //
 struct aiNode;
@@ -12,18 +13,24 @@ struct aiScene;
 struct aiMaterial;
 enum aiTextureType;
 
+class Model;
+
 class Model
 {
 public:
-	Model(const std::string& filePath);
+	Model(const std::string& filePath, Transform* transform);
 
 	void Update();
 	void Draw(ShaderProgram* shaderProgram);
 
+	std::string& GetFilePath();
+
 private:
 	void ProcessNode(aiNode* node, const aiScene* scene);
 
+	Transform* transform;
 	std::string filePath;
-
-	static std::vector<std::string> modelArchive;
+	std::vector<Mesh*> meshes;
 };
+
+static std::vector<Model*> ModelArchive;
