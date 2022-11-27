@@ -146,5 +146,6 @@
     <None Include="Source\Shaders\color.frag" />
     <None Include="Source\Shaders\screen.vert" />
     <None Include="Source\Shaders\screen.frag" />
+    <None Include="Source\Shaders\gaussianBlur.frag" />
   </ItemGroup>
 </Project>

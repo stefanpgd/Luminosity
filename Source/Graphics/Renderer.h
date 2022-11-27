@@ -23,9 +23,13 @@ private:
 	GLFWwindow* window;
 	Framebuffer* HDRColorBuffer;
 	ShaderProgram* screenShader;
+	ShaderProgram* blurShader;
 	ScreenQuad* screenQuad;
 
 	const unsigned int windowWidth = 1080;
 	const unsigned int windowHeight = 720;
 	float exposure = 1.0f;
+
+	unsigned int pingpongFBO[2];
+	unsigned int pingpongBuffer[2];
 };
