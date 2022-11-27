@@ -29,7 +29,7 @@ Renderer::Renderer(const std::string& windowName)
 
 	glViewport(0, 0, windowWidth, windowHeight);
 
-	HDRColorBuffer = new Framebuffer(windowWidth, windowHeight, true);
+	HDRColorBuffer = new Framebuffer(windowWidth, windowHeight, true, 2);
 	screenShader = new ShaderProgram("screen.vert", "screen.frag");
 	screenQuad = new ScreenQuad();
 
@@ -74,7 +74,7 @@ void Renderer::RenderFrame()
 
 	screenShader->Bind();
 	screenShader->SetFloat("exposure", exposure);
-	HDRColorBuffer->BindTexture();
+	HDRColorBuffer->BindTexture(0, 1);
 	screenQuad->Render();
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
