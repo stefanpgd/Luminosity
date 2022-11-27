@@ -22,10 +22,10 @@ public:
 private:
 	GLFWwindow* window;
 	Framebuffer* HDRColorBuffer;
-	Framebuffer* screenBuffer;
 	ShaderProgram* screenShader;
 	ScreenQuad* screenQuad;
 
 	const unsigned int windowWidth = 1080;
 	const unsigned int windowHeight = 720;
+	float exposure = 1.0f;
 };

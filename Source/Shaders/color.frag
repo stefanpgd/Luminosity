@@ -5,7 +5,7 @@ out vec4 FragColor;
 
 void main()
 {
-	vec3 color = vec3(1.0, 0.21, 0.12);
+	vec3 color = vec3(1.0, 0, 0);
 	vec3 lightDir = normalize(vec3(0.2, -1.0, 0.1));
 	vec3 norm = normalize(Normal);
 

@@ -9,6 +9,10 @@
 #include <iostream>
 #include <string>
 
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+
 #include "Graphics/Model.h"
 #include "Graphics/Transform.h"
 #include "Graphics/ShaderProgram.h"
@@ -25,6 +29,13 @@ Engine::Engine()
 	glfwInit();
 
 	renderer = new Renderer("Luminosity");
+
+	// Initialize ImGui // 
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGui::StyleColorsDark();
+	ImGui_ImplGlfw_InitForOpenGL(renderer->GetWindow(), true);
+	ImGui_ImplOpenGL3_Init("#version 460");
 }
 
 void Engine::Run()
@@ -57,6 +68,10 @@ void Engine::Run()
 
 		renderer->RenderFrame();
 	}
+
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 
 	glfwDestroyWindow(window);
 	glfwTerminate();
