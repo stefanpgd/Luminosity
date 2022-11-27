@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Graphics\Framebuffer.cpp" />
+    <ClCompile Include="Source\Game\GameManager.cpp" />
     <ClCompile Include="Source\Camera.cpp" />
     <ClCompile Include="Dependencies\GLAD\include\glad\glad.c" />
     <ClCompile Include="Source\Graphics\Mesh.cpp" />
@@ -162,6 +164,8 @@
     <ClCompile Include="Source\Graphics\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Graphics\Framebuffer.h" />
+    <ClInclude Include="Source\Game\GameManager.h" />
     <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Dependencies\GLAD\include\glad\glad.h" />
     <ClInclude Include="Dependencies\GLAD\include\KHR\khrplatform.h" />
@@ -180,6 +184,8 @@
   <ItemGroup>
     <None Include="Source\Shaders\color.frag" />
     <None Include="Source\Shaders\color.vert" />
+    <None Include="Source\Shaders\screen.frag" />
+    <None Include="Source\Shaders\screen.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
