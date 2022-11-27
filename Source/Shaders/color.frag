@@ -12,7 +12,7 @@ void main()
 	vec3 norm = normalize(Normal);
 
 	float diff = max(dot(norm, -lightDir), 0.0);
-	vec3 diffuseColor = color * intensity;
+	vec3 diffuseColor = color * diff * intensity;
     FragColor = vec4(diffuseColor, 1.0);
 
 	float brightness = dot(FragColor.rgb, vec3(0.2126, 0.7152, 0.0722));

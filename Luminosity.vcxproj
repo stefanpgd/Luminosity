@@ -158,6 +158,7 @@
     <ClCompile Include="Dependencies\ImGui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="Dependencies\ImGui\imgui_tables.cpp" />
     <ClCompile Include="Dependencies\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="Source\Graphics\PostProcessor.cpp" />
     <ClCompile Include="Source\Graphics\ScreenQuad.cpp" />
     <ClCompile Include="Source\Graphics\Framebuffer.cpp" />
     <ClCompile Include="Source\Game\GameManager.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="Dependencies\ImGui\imstb_rectpack.h" />
     <ClInclude Include="Dependencies\ImGui\imstb_textedit.h" />
     <ClInclude Include="Dependencies\ImGui\imstb_truetype.h" />
+    <ClInclude Include="Source\Graphics\PostProcessor.h" />
     <ClInclude Include="Source\Graphics\ScreenQuad.h" />
     <ClInclude Include="Source\Graphics\Framebuffer.h" />
     <ClInclude Include="Source\Game\GameManager.h" />
