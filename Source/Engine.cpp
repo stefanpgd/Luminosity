@@ -49,11 +49,11 @@ void Engine::Run()
 			isRunning = false;
 		}
 
-		//shader.Bind();
-		//camera.Update(renderer->GetWindow(), 0.016);
-		//shader.SetMat4("VPMatrix", camera.GetViewProjectionMatrix());
+		shader.Bind();
+		camera.Update(renderer->GetWindow(), 0.016);
+		shader.SetMat4("VPMatrix", camera.GetViewProjectionMatrix());
 
-		//model.Draw(&shader);
+		model.Draw(&shader);
 
 		renderer->RenderFrame();
 	}

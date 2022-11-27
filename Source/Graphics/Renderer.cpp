@@ -48,16 +48,19 @@ unsigned int Renderer::GetWindowHeight()
 
 void Renderer::StartFrame()
 {
-	
+	HDRColorBuffer->BindBuffer();
 }
 
 void Renderer::RenderFrame()
 {
+	glBindFramebuffer(GL_FRAMEBUFFER, 0); // back to default
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClear(GL_DEPTH_BUFFER_BIT);
 
 	screenShader->Bind();
+	screenShader->SetInt("screenTexture", 0);
+	HDRColorBuffer->BindTexture(0);
 	screenQuad->Render();
 
 	glfwSwapBuffers(window);

@@ -3,7 +3,10 @@ out vec4 FragColor;
   
 in vec2 uv;
 
+uniform sampler2D screenTexture;
+
 void main()
 { 
-    FragColor = vec4(uv.x, uv.y, 0.0, 1.0);
+    vec3 color = texture(screenTexture, uv).rgb;
+    FragColor = vec4(color, 1.0);
 }
