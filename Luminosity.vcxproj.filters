@@ -48,6 +48,9 @@
     <ClCompile Include="Source\Graphics\Framebuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Graphics\ScreenQuad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\GLAD\include\glad\glad.h">
@@ -81,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Graphics\Framebuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\ScreenQuad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,6 +3,10 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "Framebuffer.h"
+#include "ShaderProgram.h"
+#include "ScreenQuad.h"
+
 Renderer::Renderer(const std::string& windowName)
 {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -21,6 +25,10 @@ Renderer::Renderer(const std::string& windowName)
 
 	glViewport(0, 0, windowWidth, windowHeight);
 	glEnable(GL_DEPTH_TEST);
+
+	HDRColorBuffer = new Framebuffer(windowWidth, windowHeight, true);
+	screenShader = new ShaderProgram("screen.vert", "screen.frag");
+	screenQuad = new ScreenQuad();
 }
 
 GLFWwindow* Renderer::GetWindow()
@@ -40,12 +48,17 @@ unsigned int Renderer::GetWindowHeight()
 
 void Renderer::StartFrame()
 {
-	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-	glClear(GL_DEPTH_BUFFER_BIT);
+	
 }
 
 void Renderer::RenderFrame()
 {
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_DEPTH_BUFFER_BIT);
+
+	screenShader->Bind();
+	screenQuad->Render();
+
 	glfwSwapBuffers(window);
 }

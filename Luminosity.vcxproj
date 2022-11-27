@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Graphics\ScreenQuad.cpp" />
     <ClCompile Include="Source\Graphics\Framebuffer.cpp" />
     <ClCompile Include="Source\Game\GameManager.cpp" />
     <ClCompile Include="Source\Camera.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="Source\Graphics\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Graphics\ScreenQuad.h" />
     <ClInclude Include="Source\Graphics\Framebuffer.h" />
     <ClInclude Include="Source\Game\GameManager.h" />
     <ClInclude Include="Source\Camera.h" />
