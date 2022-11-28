@@ -4,6 +4,7 @@
 #include "../Graphics/Texture.h"
 #include <imgui.h>
 #include <string>
+#include "../Utilities.h"
 
 Star::Star()
 {
@@ -13,7 +14,7 @@ Star::Star()
 	std::string path = "Assets/Textures/starFade.png";
 	starBlur = new Texture(path, TextureType::Albedo, true);
 
-	starColor = glm::vec3(1.0f, 1.0f, 1.0f);
+	starColor = glm::vec3(Random01(), Random01(), Random01());
 	starIntensity = 3.0f;
 }
 

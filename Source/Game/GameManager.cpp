@@ -3,6 +3,7 @@
 #include "../Camera.h"
 
 #include "Star.h"
+#include "Planet.h"
 
 GameManager::GameManager(GLFWwindow* window, unsigned int windowWidth, unsigned int windowHeight)
 {
@@ -40,5 +41,12 @@ void GameManager::ImGuiDraw()
 
 void GameManager::SetupSystem()
 {
+	gameObjects.clear();
+
 	gameObjects.push_back(new Star());
+
+	for(int i = 0; i < 4; i++)
+	{
+		gameObjects.push_back(new Planet());
+	}
 }

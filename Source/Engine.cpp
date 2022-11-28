@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <chrono>
+#include <random>
 
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
@@ -28,6 +29,8 @@ static void GLFWErrorCallback(int error, const char* description)
 
 Engine::Engine()
 {
+	srand(time(nullptr));
+
 	glfwSetErrorCallback(GLFWErrorCallback);
 	glfwInit();
 
@@ -40,8 +43,6 @@ Engine::Engine()
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(renderer->GetWindow(), true);
 	ImGui_ImplOpenGL3_Init("#version 460");
-
-	srand(time(nullptr));
 }
 
 void Engine::Run()

@@ -7,7 +7,6 @@ layout (location = 0) out vec4 FragColor;
 layout (location = 1) out vec4 BrightColor;
 
 uniform vec3 color;
-uniform float intensity;
 uniform float time;
 
 uniform sampler2D texture_albedo;
@@ -19,10 +18,10 @@ void main()
 
 	FragColor = vec4(col, 1.0);
 
-	float brightness = dot(FragColor.rgb, vec3(0.426, 0.452, 0.422));
+	float brightness = dot(FragColor.rgb, vec3(0.8, 0.8, 0.8));
 	if(brightness > 1.0)
 	{
-		BrightColor = vec4(col, 1.0);
+		BrightColor = vec4(col, 1.0) * 0.05;
 	}
 	else
 	{
