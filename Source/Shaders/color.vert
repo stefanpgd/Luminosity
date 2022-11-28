@@ -8,10 +8,12 @@ uniform mat4 VPMatrix;
 
 out vec3 Normal;
 out vec2 UV;
+out vec3 FragPos;
 
 void main()
 {
 	gl_Position = VPMatrix * ModelMatrix * vec4(aPos, 1.0);
 	Normal = mat3(transpose(inverse(ModelMatrix))) * aNormal;  
 	UV = aTexCoord;
+	FragPos = vec3(ModelMatrix * vec4(aPos, 1.0));
 }

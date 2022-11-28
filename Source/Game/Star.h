@@ -4,6 +4,7 @@
 
 class Model;
 class ShaderProgram;
+class Texture;
 
 class Star : public GameObject
 {
@@ -17,6 +18,7 @@ public:
 private:
 	Model* model;
 	ShaderProgram* starShader;
+	Texture* starBlur;
 
 	glm::vec3 starColor;
 	float starIntensity;

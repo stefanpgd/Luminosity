@@ -175,6 +175,7 @@
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Graphics\Transform.cpp" />
     <ClCompile Include="Source\Game\Star.cpp" />
+    <ClCompile Include="Source\Graphics\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\ImGui\imconfig.h" />
@@ -203,6 +204,7 @@
     <ClInclude Include="Source\Engine.h" />
     <ClInclude Include="Source\Graphics\Transform.h" />
     <ClInclude Include="Source\Game\Star.h" />
+    <ClInclude Include="Source\Graphics\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Dependencies\Assimp\lib\assimp-vc143-mt.dll">
@@ -213,6 +215,7 @@
     <None Include="Source\Shaders\color.frag" />
     <None Include="Source\Shaders\color.vert" />
     <None Include="Source\Shaders\gaussianBlur.frag" />
+    <None Include="Source\Shaders\planet.frag" />
     <None Include="Source\Shaders\screen.frag" />
     <None Include="Source\Shaders\screen.vert" />
     <None Include="Source\Shaders\sun.frag" />

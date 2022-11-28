@@ -1,12 +1,17 @@
 #include "Star.h"
 #include "../Graphics/Model.h"
 #include "../Graphics/ShaderProgram.h"
+#include "../Graphics/Texture.h"
 #include <imgui.h>
+#include <string>
 
 Star::Star()
 {
 	model = new Model("Assets/Models/Sphere/Sphere.gltf", &transform);
 	starShader = new ShaderProgram("color.vert", "sun.frag");
+
+	std::string path = "Assets/Textures/starFade.png";
+	starBlur = new Texture(path, TextureType::Albedo, true);
 
 	starColor = glm::vec3(1.0f, 1.0f, 1.0f);
 	starIntensity = 3.0f;
@@ -24,6 +29,8 @@ void Star::Draw(Camera* camera)
 	starShader->SetFloat("intensity", starIntensity);
 	starShader->SetVec3("color", starColor);
 	starShader->SetFloat("time", time);
+	starBlur->Bind(starShader);
+
 	model->Draw(starShader);
 }
 
