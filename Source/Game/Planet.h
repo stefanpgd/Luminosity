@@ -9,7 +9,7 @@ class Texture;
 class Planet : public GameObject
 {
 public:
-	Planet();
+	Planet(glm::vec3 starColor);
 
 	virtual void Update(float deltaTime) override;
 	virtual void Draw(Camera* camera) override;
@@ -20,6 +20,8 @@ private:
 	ShaderProgram* planetShader;
 
 	glm::vec3 planetColor;
+	glm::vec3 starColor;
+
 	float orbitAngle = 0.0f;
 	float orbitSpeed = 0.0f;
 	float orbitSize = 0.0f;

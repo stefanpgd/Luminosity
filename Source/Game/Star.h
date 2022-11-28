@@ -15,12 +15,13 @@ public:
 	virtual void Draw(Camera* camera) override;
 	virtual void ImGuiDraw() override;
 
+	glm::vec3 starColor;
+
 private:
 	Model* model;
 	ShaderProgram* starShader;
 	Texture* starBlur;
 
-	glm::vec3 starColor;
 	float starIntensity;
 	float time = 0.0f;
 };

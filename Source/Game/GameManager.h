@@ -17,6 +17,8 @@ public:
 private:
 	void SetupSystem();
 
+	GLFWwindow* window;
 	Camera* camera;
 	std::vector<GameObject*> gameObjects;
+	bool regenerateSystem = false;
 };

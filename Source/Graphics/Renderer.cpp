@@ -54,7 +54,7 @@ void Renderer::StartFrame()
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 
-	sceneBuffer->BindBuffer();
+	sceneBuffer->BindBuffer(glm::vec3(0.001f, 0.001f, 0.002f));
 }
 
 void Renderer::RenderFrame()

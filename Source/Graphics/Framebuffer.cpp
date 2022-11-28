@@ -49,10 +49,10 @@ Framebuffer::Framebuffer(unsigned int windowWidth, unsigned int windowHeight, bo
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
-void Framebuffer::BindBuffer(float clearColor)
+void Framebuffer::BindBuffer(glm::vec3 clearColor)
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
-	glClearColor(clearColor, clearColor, clearColor, 1.0f);
+	glClearColor(clearColor.x, clearColor.y, clearColor.z, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	if(depthTest)

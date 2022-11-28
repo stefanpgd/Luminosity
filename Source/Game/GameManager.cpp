@@ -4,9 +4,11 @@
 
 #include "Star.h"
 #include "Planet.h"
+#include "../Utilities.h"
 
 GameManager::GameManager(GLFWwindow* window, unsigned int windowWidth, unsigned int windowHeight)
 {
+	this->window = window;
 	camera = new Camera(window, glm::vec3(0.0, 0.0f, 15.0f), glm::vec3(0.0f, 0.0f, -1.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f), windowWidth, windowHeight);
 
@@ -20,6 +22,19 @@ void GameManager::Update(float deltaTime)
 	for(GameObject* gameObject : gameObjects)
 	{
 		gameObject->Update(deltaTime);
+	}
+
+	if(glfwGetKey(window, GLFW_KEY_R))
+	{
+		regenerateSystem = true;
+	}
+	else
+	{
+		if(regenerateSystem)
+		{
+			regenerateSystem = false;
+			SetupSystem();
+		}
 	}
 }
 
@@ -43,10 +58,12 @@ void GameManager::SetupSystem()
 {
 	gameObjects.clear();
 
-	gameObjects.push_back(new Star());
+	Star* star = new Star();
+	gameObjects.push_back(star);
 
-	for(int i = 0; i < 4; i++)
+	int planetCount = RandomInRange(3, 7);
+	for(int i = 0; i < planetCount; i++)
 	{
-		gameObjects.push_back(new Planet());
+		gameObjects.push_back(new Planet(star->starColor));
 	}
 }

@@ -8,14 +8,22 @@ layout (location = 1) out vec4 BrightColor;
 
 uniform vec3 color;
 uniform float time;
+uniform vec3 starColor;
 
 uniform sampler2D texture_albedo;
 
 void main()
 {
 	float diff = dot(Normal, -FragPos);
-	vec3 col = color * diff;
+	vec3 ambient = (color * 0.05);
+	vec3 diffuse;
 
+	if(diff > 0)
+	{
+		diffuse = (color * starColor) * diff;
+	}
+
+	vec3 col = ambient + diffuse;
 	FragColor = vec4(col, 1.0);
 
 	float brightness = dot(FragColor.rgb, vec3(0.8, 0.8, 0.8));
