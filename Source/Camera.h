@@ -6,16 +6,16 @@ class Camera
 {
 public:
 	Camera() = delete;
-	Camera(const glm::vec3& position, const glm::vec3& front, const glm::vec3& up, float windowWidth, float windowHeight);
+	Camera(GLFWwindow* window, const glm::vec3& position, const glm::vec3& front, const glm::vec3& up, float windowWidth, float windowHeight);
 
-	void Update(GLFWwindow* window, float deltaTime);
+	void Update(float deltaTime);
 
 	glm::mat4& GetViewProjectionMatrix();
 	glm::vec3& GetPosition();
 
 private:
-	void ProcessInput(GLFWwindow* window, float deltaTime);
-	void ProcessMouse(GLFWwindow* window, float deltaTime);
+	void ProcessInput(float deltaTime);
+	void ProcessMouse(float deltaTime);
 
 	glm::vec3 position;
 	glm::vec3 front;
@@ -25,6 +25,7 @@ private:
 	glm::mat4 projectionMatrix;
 	glm::mat4 viewProjectionMatrix;
 
+	GLFWwindow* window;
 	float windowWidth;
 	float windowHeight;
 

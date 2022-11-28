@@ -8,6 +8,7 @@
 // STD
 #include <iostream>
 #include <string>
+#include <chrono>
 
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
@@ -17,6 +18,8 @@
 #include "Graphics/Transform.h"
 #include "Graphics/ShaderProgram.h"
 #include "Camera.h"
+
+#include "Game/GameManager.h"
 
 static void GLFWErrorCallback(int error, const char* description)
 {
@@ -29,6 +32,7 @@ Engine::Engine()
 	glfwInit();
 
 	renderer = new Renderer("Luminosity");
+	gameManager = new GameManager(renderer->GetWindow(), renderer->GetWindowWidth(), renderer->GetWindowHeight());
 
 	// Initialize ImGui // 
 	IMGUI_CHECKVERSION();
@@ -36,6 +40,8 @@ Engine::Engine()
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(renderer->GetWindow(), true);
 	ImGui_ImplOpenGL3_Init("#version 460");
+
+	srand(time(nullptr));
 }
 
 void Engine::Run()
@@ -43,30 +49,31 @@ void Engine::Run()
 	bool isRunning = true;
 	GLFWwindow* window = renderer->GetWindow();
 
-	Transform transform;
-	Model model("Assets/Models/Sphere/Sphere.gltf", &transform);
-	ShaderProgram shader("color.vert", "color.frag");
-	Camera camera(glm::vec3(0.0, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), 
-		renderer->GetWindowWidth(), renderer->GetWindowHeight());
+	static float deltaTime = 0.0f;
+	static std::chrono::high_resolution_clock clock;
+	static auto t0 = std::chrono::time_point_cast<std::chrono::milliseconds>((clock.now())).time_since_epoch();
 
 	while (isRunning)
 	{
-		renderer->StartFrame();
+		auto t1 = std::chrono::time_point_cast<std::chrono::milliseconds>((clock.now())).time_since_epoch();
+		deltaTime = (t1 - t0).count() * .001;
+		t0 = t1;
 
-		// Input // 
+		renderer->StartFrame();
+		gameManager->Update(deltaTime);
+		gameManager->Draw();
+
+#if _DEBUG
+		gameManager->ImGuiDraw();
+#endif
+
+		renderer->RenderFrame();
+
 		glfwPollEvents();
-		if (glfwWindowShouldClose(window) || glfwGetKey(window, GLFW_KEY_ESCAPE))
+		if(glfwWindowShouldClose(window) || glfwGetKey(window, GLFW_KEY_ESCAPE))
 		{
 			isRunning = false;
 		}
-
-		shader.Bind();
-		camera.Update(renderer->GetWindow(), 0.016);
-		shader.SetMat4("VPMatrix", camera.GetViewProjectionMatrix());
-
-		model.Draw(&shader);
-
-		renderer->RenderFrame();
 	}
 
 	ImGui_ImplOpenGL3_Shutdown();

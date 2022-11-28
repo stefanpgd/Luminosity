@@ -7,9 +7,11 @@ uniform mat4 ModelMatrix;
 uniform mat4 VPMatrix;
 
 out vec3 Normal;
+out vec2 UV;
 
 void main()
 {
 	gl_Position = VPMatrix * ModelMatrix * vec4(aPos, 1.0);
 	Normal = mat3(transpose(inverse(ModelMatrix))) * aNormal;  
+	UV = aTexCoord;
 }

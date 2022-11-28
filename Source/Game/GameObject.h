@@ -1,0 +1,13 @@
+#pragma once
+#include "../Graphics/Transform.h"
+#include "../Camera.h"
+
+class GameObject
+{
+public:
+	virtual void Update(float deltaTime) = 0;
+	virtual void Draw(Camera* camera) = 0;
+	virtual void ImGuiDraw();
+
+	Transform transform;
+};

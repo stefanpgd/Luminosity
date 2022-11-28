@@ -23,7 +23,7 @@ class Mesh
 public:
 	Mesh(aiMesh* mesh, const aiScene* scene);
 
-	void Draw(ShaderProgram* shaderProgram);
+	void Draw();
 
 private:
 	void SetupBuffers();

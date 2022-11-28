@@ -158,6 +158,9 @@
     <ClCompile Include="Dependencies\ImGui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="Dependencies\ImGui\imgui_tables.cpp" />
     <ClCompile Include="Dependencies\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="Dependencies\STB\stb_image.cpp" />
+    <ClCompile Include="Dependencies\STB\stb_image_write.cpp" />
+    <ClCompile Include="Source\Game\GameObject.cpp" />
     <ClCompile Include="Source\Graphics\PostProcessor.cpp" />
     <ClCompile Include="Source\Graphics\ScreenQuad.cpp" />
     <ClCompile Include="Source\Graphics\Framebuffer.cpp" />
@@ -171,6 +174,7 @@
     <ClCompile Include="Source\Engine.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Graphics\Transform.cpp" />
+    <ClCompile Include="Source\Game\Star.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\ImGui\imconfig.h" />
@@ -182,6 +186,9 @@
     <ClInclude Include="Dependencies\ImGui\imstb_rectpack.h" />
     <ClInclude Include="Dependencies\ImGui\imstb_textedit.h" />
     <ClInclude Include="Dependencies\ImGui\imstb_truetype.h" />
+    <ClInclude Include="Dependencies\STB\stb_image.h" />
+    <ClInclude Include="Dependencies\STB\stb_image_write.h" />
+    <ClInclude Include="Source\Game\GameObject.h" />
     <ClInclude Include="Source\Graphics\PostProcessor.h" />
     <ClInclude Include="Source\Graphics\ScreenQuad.h" />
     <ClInclude Include="Source\Graphics\Framebuffer.h" />
@@ -195,6 +202,7 @@
     <ClInclude Include="Source\Graphics\Renderer.h" />
     <ClInclude Include="Source\Engine.h" />
     <ClInclude Include="Source\Graphics\Transform.h" />
+    <ClInclude Include="Source\Game\Star.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Dependencies\Assimp\lib\assimp-vc143-mt.dll">
@@ -207,6 +215,7 @@
     <None Include="Source\Shaders\gaussianBlur.frag" />
     <None Include="Source\Shaders\screen.frag" />
     <None Include="Source\Shaders\screen.vert" />
+    <None Include="Source\Shaders\sun.frag" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

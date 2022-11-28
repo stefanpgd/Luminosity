@@ -1,6 +1,7 @@
 #pragma once
 
 class Renderer;
+class GameManager;
 
 class Engine
 {
@@ -11,4 +12,5 @@ public:
 
 private:
 	Renderer* renderer;
+	GameManager* gameManager;
 };

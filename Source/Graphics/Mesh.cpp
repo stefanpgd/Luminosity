@@ -48,7 +48,7 @@ Mesh::Mesh(aiMesh* mesh, const aiScene* scene)
 	indexData.shrink_to_fit();
 }
 
-void Mesh::Draw(ShaderProgram* shaderProgram)
+void Mesh::Draw()
 {
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, indicesCount, GL_UNSIGNED_INT, 0);

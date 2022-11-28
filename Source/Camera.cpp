@@ -1,20 +1,21 @@
 #include "Camera.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-Camera::Camera(const glm::vec3& position, const glm::vec3& front, const glm::vec3& up, float windowWidth, float windowHeight) :
+Camera::Camera(GLFWwindow* window, const glm::vec3& position, const glm::vec3& front, const glm::vec3& up, float windowWidth, float windowHeight) :
 	position(position), front(front), up(up), windowWidth(windowWidth), windowHeight(windowHeight)
 {
+	this->window = window;
 	viewMatrix = glm::lookAt(position, position + front, up);
 	projectionMatrix = glm::perspective(glm::radians(FOV), windowWidth / windowHeight, nearClip, farClip);
 }
 
-void Camera::Update(GLFWwindow* window, float deltaTime)
+void Camera::Update(float deltaTime)
 {
 	viewMatrix = glm::lookAt(position, position + front, up);
 	viewProjectionMatrix = projectionMatrix * viewMatrix;
 
-	ProcessInput(window, deltaTime);
-	ProcessMouse(window, deltaTime);
+	ProcessInput(deltaTime);
+	ProcessMouse(deltaTime);
 }
 
 glm::mat4& Camera::GetViewProjectionMatrix()
@@ -27,7 +28,7 @@ glm::vec3& Camera::GetPosition()
 	return position;
 }
 
-void Camera::ProcessInput(GLFWwindow* window, float deltaTime)
+void Camera::ProcessInput(float deltaTime)
 {
 	float speed = cameraMovespeed * deltaTime;
 
@@ -41,7 +42,7 @@ void Camera::ProcessInput(GLFWwindow* window, float deltaTime)
 		position += glm::normalize(glm::cross(front, up)) * speed;
 }
 
-void Camera::ProcessMouse(GLFWwindow* window, float deltaTime)
+void Camera::ProcessMouse(float deltaTime)
 {
 
 }
