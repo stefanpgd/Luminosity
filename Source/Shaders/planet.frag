@@ -18,12 +18,16 @@ void main()
 	vec3 ambient = (color * 0.05);
 	vec3 diffuse;
 
+	float mag = length(FragPos);
+	float linearFallof = 1.5;
+	float attentuation = 1.0 / (1.0 + linearFallof * mag);
+
 	if(diff > 0)
 	{
 		diffuse = (color * starColor) * diff;
 	}
 
-	vec3 col = ambient + diffuse;
+	vec3 col = ambient + (diffuse * attentuation);
 	FragColor = vec4(col, 1.0);
 
 	float brightness = dot(FragColor.rgb, vec3(0.8, 0.8, 0.8));

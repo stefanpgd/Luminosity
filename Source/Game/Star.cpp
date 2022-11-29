@@ -14,8 +14,8 @@ Star::Star()
 	std::string path = "Assets/Textures/starFade.png";
 	starBlur = new Texture(path, TextureType::Albedo, true);
 
-	starColor = glm::vec3(Random01(), Random01(), Random01());
-	starIntensity = 3.0f;
+	starColor = glm::vec3(RandomInRange(0.85, 1.0), RandomInRange(0.1, 1.0), RandomInRange(0.1, 1.0));
+	starIntensity = RandomInRange(1.25, 3.0f);
 }
 
 void Star::Update(float deltaTime)

@@ -64,6 +64,6 @@ void GameManager::SetupSystem()
 	int planetCount = RandomInRange(3, 7);
 	for(int i = 0; i < planetCount; i++)
 	{
-		gameObjects.push_back(new Planet(star->starColor));
+		gameObjects.push_back(new Planet(star));
 	}
 }

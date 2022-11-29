@@ -5,11 +5,12 @@
 class Model;
 class ShaderProgram;
 class Texture;
+class Star;
 
 class Planet : public GameObject
 {
 public:
-	Planet(glm::vec3 starColor);
+	Planet(Star* star);
 
 	virtual void Update(float deltaTime) override;
 	virtual void Draw(Camera* camera) override;
@@ -18,6 +19,7 @@ public:
 private:
 	Model* model;
 	ShaderProgram* planetShader;
+	Star* star;
 
 	glm::vec3 planetColor;
 	glm::vec3 starColor;
@@ -25,4 +27,5 @@ private:
 	float orbitAngle = 0.0f;
 	float orbitSpeed = 0.0f;
 	float orbitSize = 0.0f;
+	float orbitYOffset = 0.0f;
 };
