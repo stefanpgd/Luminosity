@@ -1,16 +1,17 @@
-#include "Planet.h"
+#include "Satellite.h"
 #include "../Graphics/Model.h"
 #include "../Graphics/ShaderProgram.h"
 #include "../Graphics/Texture.h"
 #include "../Utilities.h"
 #include <imgui.h>
 #include <string>
+#include "Planet.h"
 #include "Star.h"
-#include "Satellite.h"
 
-Planet::Planet(Star* star)
+Satellite::Satellite(Star* star, Planet* planet)
 {
 	this->star = star;
+	this->planet = planet;
 
 	model = new Model("Assets/Models/Sphere/Sphere.gltf", &transform);
 	planetShader = new ShaderProgram("color.vert", "planet.frag");
@@ -18,32 +19,20 @@ Planet::Planet(Star* star)
 	satelliteColor = glm::vec3(Random01(), Random01(), Random01());
 
 	orbitAngle = RandomInRange(0.0, 500.0);
-	orbitSpeed = RandomInRange(10, 25.0);
-	orbitSize = RandomInRange(3, 8);
-	orbitYOffset = RandomInRange(-0.4, 0.4);
+	orbitSpeed = RandomInRange(40, 80.0);
+	orbitSize = RandomInRange(0.75, 1.5);
+	orbitYOffset = RandomInRange(-1, 1);
 
-	float scale = RandomInRange(0.15, 0.56);
+	float scale = RandomInRange(0.05, 0.16);
 	transform.Scale = glm::vec3(scale, scale, scale);
-
-	float roll = Random01();
-
-	if (roll > 0.5)
-	{
-		satellites.push_back(new Satellite(star, this));
-	}
 }
 
-void Planet::FlipOrientation()
+void Satellite::FlipOrientation()
 {
 	drawFlipped = !drawFlipped;
-
-	for (Satellite* satellite : satellites)
-	{
-		satellite->FlipOrientation();
-	}
 }
 
-void Planet::Update(float deltaTime)
+void Satellite::Update(float deltaTime)
 {
 	orbitAngle += deltaTime * orbitSpeed;
 
@@ -59,15 +48,10 @@ void Planet::Update(float deltaTime)
 		z = t;
 	}
 
-	transform.Position = glm::vec3(x, y, z);
-
-	for (Satellite* satellite : satellites)
-	{
-		satellite->Update(deltaTime);
-	}
+	transform.Position = glm::vec3(x, y, z) + planet->GetPosition();
 }
 
-void Planet::Draw(Camera* camera)
+void Satellite::Draw(Camera* camera)
 {
 	planetShader->Bind();
 	planetShader->SetMat4("VPMatrix", camera->GetViewProjectionMatrix());
@@ -75,18 +59,8 @@ void Planet::Draw(Camera* camera)
 	planetShader->SetVec3("starColor", star->starColor);
 
 	model->Draw(planetShader);
-
-	for (Satellite* satellite : satellites)
-	{
-		satellite->Draw(camera);
-	}
 }
 
-void Planet::ImGuiDraw()
+void Satellite::ImGuiDraw()
 {
-}
-
-glm::vec3& Planet::GetPosition()
-{
-	return transform.Position;
 }

@@ -1,18 +1,17 @@
 #pragma once
 #include "GameObject.h"
-#include <vector>
 #include <glm/glm.hpp>
 
 class Model;
 class ShaderProgram;
 class Texture;
+class Planet;
 class Star;
-class Satellite;
 
-class Planet : public GameObject
+class Satellite : public GameObject
 {
 public:
-	Planet(Star* star);
+	Satellite(Star* star, Planet* planet);
 
 	void FlipOrientation();
 
@@ -20,17 +19,13 @@ public:
 	virtual void Draw(Camera* camera) override;
 	virtual void ImGuiDraw() override;
 
-	glm::vec3& GetPosition();
-
 private:
 	Model* model;
 	ShaderProgram* planetShader;
+	Planet* planet;
 	Star* star;
 
-	std::vector<Satellite*> satellites;
-
 	glm::vec3 satelliteColor;
-	glm::vec3 starColor;
 
 	float orbitAngle = 0.0f;
 	float orbitSpeed = 0.0f;

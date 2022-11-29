@@ -160,6 +160,7 @@
     <ClCompile Include="Dependencies\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Dependencies\STB\stb_image.cpp" />
     <ClCompile Include="Dependencies\STB\stb_image_write.cpp" />
+    <ClCompile Include="Source\Game\Satellite.cpp" />
     <ClCompile Include="Source\Game\Planet.cpp" />
     <ClCompile Include="Source\Game\GameObject.cpp" />
     <ClCompile Include="Source\Graphics\PostProcessor.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="Dependencies\ImGui\imstb_truetype.h" />
     <ClInclude Include="Dependencies\STB\stb_image.h" />
     <ClInclude Include="Dependencies\STB\stb_image_write.h" />
+    <ClInclude Include="Source\Game\Satellite.h" />
     <ClInclude Include="Source\Game\Planet.h" />
     <ClInclude Include="Source\Game\GameObject.h" />
     <ClInclude Include="Source\Graphics\PostProcessor.h" />
