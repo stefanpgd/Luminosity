@@ -19,9 +19,10 @@ void GameManager::Update(float deltaTime)
 {
 	camera->Update(deltaTime);
 
-	for(GameObject* gameObject : gameObjects)
+	star->Update(deltaTime);
+	for(Planet* planet : planets)
 	{
-		gameObject->Update(deltaTime);
+		planet->Update(deltaTime);
 	}
 
 	if(glfwGetKey(window, GLFW_KEY_R))
@@ -36,34 +37,51 @@ void GameManager::Update(float deltaTime)
 			SetupSystem();
 		}
 	}
+
+	if (glfwGetKey(window, GLFW_KEY_F))
+	{
+		flipSystem = true;
+	}
+	else
+	{
+		if (flipSystem)
+		{
+			flipSystem = false;
+			for (Planet* planet : planets)
+			{
+				planet->FlipOrientation();
+			}
+		}
+	}
 }
 
 void GameManager::Draw()
 {
-	for(GameObject* gameObject : gameObjects)
+	star->Draw(camera);
+	for(Planet* planet : planets)
 	{
-		gameObject->Draw(camera);
+		planet->Draw(camera);
 	}
 }
 
 void GameManager::ImGuiDraw()
 {
-	for(GameObject* gameObject : gameObjects)
+	star->ImGuiDraw();
+	for(Planet* planet : planets)
 	{
-		gameObject->ImGuiDraw();
+		planet->ImGuiDraw();
 	}
 }
 
 void GameManager::SetupSystem()
 {
-	gameObjects.clear();
+	planets.clear();
 
-	Star* star = new Star();
-	gameObjects.push_back(star);
+	star = new Star();
 
 	int planetCount = RandomInRange(3, 7);
 	for(int i = 0; i < planetCount; i++)
 	{
-		gameObjects.push_back(new Planet(star));
+		planets.push_back(new Planet(star));
 	}
 }

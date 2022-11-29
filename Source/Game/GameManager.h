@@ -4,6 +4,8 @@
 
 class GameObject;
 class Camera;
+class Star;
+class Planet;
 
 class GameManager
 {
@@ -19,6 +21,8 @@ private:
 
 	GLFWwindow* window;
 	Camera* camera;
-	std::vector<GameObject*> gameObjects;
+	Star* star;
+	std::vector<Planet*> planets;
 	bool regenerateSystem = false;
+	bool flipSystem = false;
 };

@@ -12,6 +12,8 @@ class Planet : public GameObject
 public:
 	Planet(Star* star);
 
+	void FlipOrientation();
+
 	virtual void Update(float deltaTime) override;
 	virtual void Draw(Camera* camera) override;
 	virtual void ImGuiDraw() override;
@@ -28,4 +30,6 @@ private:
 	float orbitSpeed = 0.0f;
 	float orbitSize = 0.0f;
 	float orbitYOffset = 0.0f;
+
+	bool drawFlipped = false;
 };

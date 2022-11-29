@@ -25,6 +25,11 @@ Planet::Planet(Star* star)
 	transform.Scale = glm::vec3(scale, scale, scale);
 }
 
+void Planet::FlipOrientation()
+{
+	drawFlipped = !drawFlipped;
+}
+
 void Planet::Update(float deltaTime)
 {
 	orbitAngle += deltaTime * orbitSpeed;
@@ -32,6 +37,14 @@ void Planet::Update(float deltaTime)
 	float x = cosf(glm::radians(orbitAngle)) * orbitSize;
 	float y = cosf(glm::radians(orbitAngle)) * orbitYOffset;
 	float z = sinf(glm::radians(orbitAngle)) * orbitSize;
+
+	if (drawFlipped)
+	{
+		float t = y;
+
+		y = z;
+		z = t;
+	}
 
 	transform.Position = glm::vec3(x, y, z);
 }
