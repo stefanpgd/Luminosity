@@ -178,6 +178,7 @@
     <ClCompile Include="Source\Graphics\Transform.cpp" />
     <ClCompile Include="Source\Game\Star.cpp" />
     <ClCompile Include="Source\Graphics\Texture.cpp" />
+    <ClCompile Include="Source\Game\StarSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\ImGui\imconfig.h" />
@@ -210,6 +211,7 @@
     <ClInclude Include="Source\Game\Star.h" />
     <ClInclude Include="Source\Graphics\Texture.h" />
     <ClInclude Include="Source\Utilities.h" />
+    <ClInclude Include="Source\Game\StarSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Dependencies\Assimp\lib\assimp-vc143-mt.dll">

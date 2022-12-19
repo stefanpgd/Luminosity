@@ -4,8 +4,7 @@
 
 class GameObject;
 class Camera;
-class Star;
-class Planet;
+class StarSystem;
 
 class GameManager
 {
@@ -17,12 +16,8 @@ public:
 	void ImGuiDraw();
 
 private:
-	void SetupSystem();
-
 	GLFWwindow* window;
 	Camera* camera;
-	Star* star;
-	std::vector<Planet*> planets;
+	StarSystem* starSystem;
 	bool regenerateSystem = false;
-	bool flipSystem = false;
 };
