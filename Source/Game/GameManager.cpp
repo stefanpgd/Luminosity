@@ -18,6 +18,19 @@ void GameManager::Update(float deltaTime)
 {
 	camera->Update(deltaTime);
 	starSystem->Update(deltaTime);
+
+	if(glfwGetKey(window, GLFW_KEY_R))
+	{
+		regenerateSystem = true;
+	}
+	else
+	{
+		if(regenerateSystem)
+		{
+			starSystem = new StarSystem();
+			regenerateSystem = false;
+		}
+	}
 }
 
 void GameManager::Draw()

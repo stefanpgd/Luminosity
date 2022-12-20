@@ -49,9 +49,10 @@ void Star::Generate()
 	starName = "Star - A";
 	classification = 'G'; // classification for Sol
 
+	luminosity = RandomInRange(0.6f, 1.5f);
 	solarMass = RandomInRange(0.8f, 1.04f);
 	solarRadii = RandomInRange(0.98, 1.15f);
-	luminosity = RandomInRange(0.6f, 1.5f);
+	transform.Scale = glm::vec3(solarRadii, solarRadii, solarRadii);
 
 	glm::vec3 yellow = glm::vec3(1.0f, 0.9568f, 0.91765f);
 	glm::vec3 yellowWhite = glm::vec3(1.0f, 0.92941f, 0.89020f);
