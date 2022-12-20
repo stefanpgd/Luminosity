@@ -72,7 +72,7 @@ void Planet::Draw(Camera* camera)
 	planetShader->Bind();
 	planetShader->SetMat4("VPMatrix", camera->GetViewProjectionMatrix());
 	planetShader->SetVec3("color", satelliteColor);
-	planetShader->SetVec3("starColor", star->starColor);
+	//planetShader->SetVec3("starColor", star->starColor);
 
 	model->Draw(planetShader);
 

@@ -18,35 +18,6 @@ void GameManager::Update(float deltaTime)
 {
 	camera->Update(deltaTime);
 	starSystem->Update(deltaTime);
-
-	//if(glfwGetKey(window, GLFW_KEY_R))
-	//{
-	//	regenerateSystem = true;
-	//}
-	//else
-	//{
-	//	if(regenerateSystem)
-	//	{
-	//		regenerateSystem = false;
-	//		SetupSystem();
-	//	}
-	//}
-
-	//if (glfwGetKey(window, GLFW_KEY_F))
-	//{
-	//	flipSystem = true;
-	//}
-	//else
-	//{
-	//	if (flipSystem)
-	//	{
-	//		flipSystem = false;
-	//		for (Planet* planet : planets)
-	//		{
-	//			planet->FlipOrientation();
-	//		}
-	//	}
-	//}
 }
 
 void GameManager::Draw()
