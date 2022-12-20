@@ -25,6 +25,7 @@ private:
 	Texture* starBlur;
 
 	float timer = 0.0f;
+	float starBightness;
 
 	// Statistics //
 	// Based on actual parameters of stellar objects
@@ -35,4 +36,10 @@ private:
 	float solarMass;
 	float solarRadii;
 	float luminosity;
+
+	int index = 0;
+	char classifications[7]
+	{
+		'O', 'B', 'A', 'F', 'G', 'K', 'M'
+	};
 };

@@ -17,12 +17,12 @@ Planet::Planet(Star* star)
 
 	satelliteColor = glm::vec3(Random01(), Random01(), Random01());
 
-	orbitAngle = RandomInRange(0.0, 500.0);
-	orbitSpeed = RandomInRange(10, 25.0);
-	orbitSize = RandomInRange(3, 8);
-	orbitYOffset = RandomInRange(-0.4, 0.4);
+	orbitAngle = RandomInRange(0.0f, 500.0f);
+	orbitSpeed = RandomInRange(10.0f, 25.0f);
+	orbitSize = RandomInRange(3.0f, 8.0f);
+	orbitYOffset = RandomInRange(-0.4f, 0.4f);
 
-	float scale = RandomInRange(0.15, 0.56);
+	float scale = RandomInRange(0.15f, 0.56f);
 	transform.Scale = glm::vec3(scale, scale, scale);
 
 	float roll = Random01();

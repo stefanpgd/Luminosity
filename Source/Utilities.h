@@ -10,3 +10,8 @@ inline float RandomInRange(float min, float max)
 {
 	return min + (max - min) * Random01();
 }
+
+inline int RandomInRange(int min, int max)
+{
+	return int(min + (max - min) * Random01());
+}
