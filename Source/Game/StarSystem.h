@@ -19,6 +19,7 @@ private:
 
 	// System Objects // 
 	Star* star;
+	std::vector<Planet*> planets;
 
 	// System Info // 
 	std::string systemName;

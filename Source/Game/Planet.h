@@ -14,28 +14,25 @@ class Planet : public GameObject
 public:
 	Planet(Star* star);
 
-	void FlipOrientation();
-
 	virtual void Update(float deltaTime) override;
 	virtual void Draw(Camera* camera) override;
 	virtual void ImGuiDraw() override;
 
-	glm::vec3& GetPosition();
-
 private:
+	void Generate();
+
+	Star* star;
 	Model* model;
 	ShaderProgram* planetShader;
-	Star* star;
 
-	std::vector<Satellite*> satellites;
+	float timer = 0.0f;
 
-	glm::vec3 satelliteColor;
-	glm::vec3 starColor;
-
-	float orbitAngle = 0.0f;
-	float orbitSpeed = 0.0f;
-	float orbitSize = 0.0f;
-	float orbitYOffset = 0.0f;
-
-	bool drawFlipped = false;
+	// Statistics // 
+	std::string planetName;
+	glm::vec3 planetColor;
+	float earthMass;
+	float earthRadii;
+	float orbitalSpeed;
+	float angleFromStar;
+	float distanceFromStar; // Expressed in AU (Astromincal Units)
 };

@@ -48,7 +48,7 @@ void Satellite::Update(float deltaTime)
 		z = t;
 	}
 
-	transform.Position = glm::vec3(x, y, z) + planet->GetPosition();
+	//transform.Position = glm::vec3(x, y, z) + planet->GetPosition();
 }
 
 void Satellite::Draw(Camera* camera)

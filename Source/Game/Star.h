@@ -16,13 +16,15 @@ public:
 	virtual void Draw(Camera* camera) override;
 	virtual void ImGuiDraw() override;
 
+	glm::vec3& GetColor();
+	float GetSolarRadii();
 
 private:
 	void Generate();
 
 	Model* model;
-	ShaderProgram* starShader;
 	Texture* starBlur;
+	ShaderProgram* starShader;
 
 	float timer = 0.0f;
 	float starBightness;

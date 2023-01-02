@@ -41,13 +41,10 @@ void Star::ImGuiDraw()
 
 void Star::Generate()
 {
-	// Generation with parameters of a class G star
-	starName = "Star - A";
-
 	// Maybe match the actual fraction of all main-sequence stars instead of 1/7 chance
-	classification = classifications[RandomInRange(0, 7)]; // classification for Sol
+	classification = classifications[RandomInRange(0, 7)]; 
+	//classification = 'G'; // classification for Sol
 	printf(&classification);
-
 
 	switch(classification)
 	{
@@ -128,4 +125,9 @@ void Star::Generate()
 			glm::vec3(1.0f,  0.70980f,  0.42353f), Random01());
 		break;
 	}
+
+	starName = "Star - " + classification;
 }
+
+glm::vec3& Star::GetColor() { return starColor; }
+float Star::GetSolarRadii() { return solarRadii; }
