@@ -42,8 +42,8 @@ void Star::ImGuiDraw()
 void Star::Generate()
 {
 	// Maybe match the actual fraction of all main-sequence stars instead of 1/7 chance
-	classification = classifications[RandomInRange(0, 7)]; 
-	//classification = 'G'; // classification for Sol
+	//classification = classifications[RandomInRange(0, 7)]; 
+	classification = 'G'; // classification for Sol
 	printf(&classification);
 
 	switch(classification)

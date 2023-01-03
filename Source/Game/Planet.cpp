@@ -49,8 +49,10 @@ void Planet::Generate()
 	planetColor = glm::vec3(Random01(), Random01(), Random01());
 
 	earthMass = 1.0f;
-	earthRadii = 1.0f;
+	earthRadii = 1.0f / 109.0f;
+	transform.Scale = glm::vec3(earthRadii);
+
 	orbitalSpeed = 15.0f;
 	angleFromStar = 0.0f;
-	distanceFromStar = 15.0f + star->GetSolarRadii();
+	distanceFromStar = star->GetSolarRadii() + RandomInRange(0.4f, 1.0f);
 }
