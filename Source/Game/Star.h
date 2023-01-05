@@ -12,7 +12,7 @@ class Star : public GameObject
 public:
 	Star();
 
-	virtual void Update(float deltaTime) override;
+	virtual void Update(float simulationTime) override;
 	virtual void Draw(Camera* camera) override;
 	virtual void ImGuiDraw() override;
 
@@ -27,7 +27,7 @@ private:
 	ShaderProgram* starShader;
 
 	float timer = 0.0f;
-	float starBightness;
+	float starBrightness;
 
 	// Statistics //
 	// Based on actual parameters of stellar objects

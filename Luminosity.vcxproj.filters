@@ -206,5 +206,6 @@
     <None Include="Source\Shaders\gaussianBlur.frag" />
     <None Include="Source\Shaders\sun.frag" />
     <None Include="Source\Shaders\planet.frag" />
+    <None Include="Source\Shaders\atmosphere.frag" />
   </ItemGroup>
 </Project>

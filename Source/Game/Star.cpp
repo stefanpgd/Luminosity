@@ -12,22 +12,22 @@ Star::Star()
 	model = new Model("Assets/Models/Sphere/Sphere.gltf", &transform);
 	starShader = new ShaderProgram("color.vert", "sun.frag");
 
-	std::string path = "Assets/Textures/starFade.png";
+	std::string path = "Assets/Textures/earth.jpg";
 	starBlur = new Texture(path, TextureType::Albedo, true);
 
 	Generate();
 }
 
-void Star::Update(float deltaTime)
+void Star::Update(float simulationTime)
 {
-	timer += deltaTime;
+	timer += simulationTime;
 }
 
 void Star::Draw(Camera* camera)
 {
 	starShader->Bind();
 	starShader->SetMat4("VPMatrix", camera->GetViewProjectionMatrix());
-	starShader->SetFloat("intensity", starBightness);
+	starShader->SetFloat("intensity", starBrightness);
 	starShader->SetVec3("color", starColor);
 	starShader->SetFloat("time", timer);
 	starBlur->Bind(starShader);
@@ -52,7 +52,7 @@ void Star::Generate()
 		solarMass = RandomInRange(16.0f, 20.0f);
 		solarRadii = RandomInRange(6.6f, 8.5f);
 		luminosity = RandomInRange(30000.0f, 40000.0f);
-		starBightness = RandomInRange(2.5f, 4.0f);
+		starBrightness = RandomInRange(2.5f, 4.0f);
 
 		transform.Scale = glm::vec3(solarRadii, solarRadii, solarRadii);
 		starColor = glm::mix(glm::vec3(0.60784, 0.69020f, 1.0f),
@@ -63,7 +63,7 @@ void Star::Generate()
 		solarMass = RandomInRange(2.1f, 16.0f);
 		solarRadii = RandomInRange(1.8f, 6.6f);
 		luminosity = RandomInRange(25.0f, 30000.0f);
-		starBightness = RandomInRange(2.5f, 4.0f);
+		starBrightness = RandomInRange(2.5f, 4.0f);
 
 		transform.Scale = glm::vec3(solarRadii, solarRadii, solarRadii);
 		starColor = glm::mix(glm::vec3(0.66667f, 0.74902f, 1.0f),
@@ -74,7 +74,7 @@ void Star::Generate()
 		solarMass = RandomInRange(1.4f, 2.1f);
 		solarRadii = RandomInRange(1.4f, 1.8f);
 		luminosity = RandomInRange(5.0f, 25.0f);
-		starBightness = RandomInRange(2.5f, 4.0f);
+		starBrightness = RandomInRange(2.5f, 4.0f);
 
 		transform.Scale = glm::vec3(solarRadii, solarRadii, solarRadii);
 		starColor = glm::mix(glm::vec3(0.79216f, 0.84314f, 1.0f),
@@ -85,7 +85,7 @@ void Star::Generate()
 		solarMass = RandomInRange(1.04f, 1.4f);
 		solarRadii = RandomInRange(1.15f, 1.4f);
 		luminosity = RandomInRange(1.5f, 5.0f);
-		starBightness = RandomInRange(2.0f, 3.5f);
+		starBrightness = RandomInRange(2.0f, 3.5f);
 
 		transform.Scale = glm::vec3(solarRadii, solarRadii, solarRadii);
 		starColor = glm::mix(glm::vec3(0.97255f, 0.96863f, 1.0f),
@@ -96,7 +96,7 @@ void Star::Generate()
 		solarMass = RandomInRange(0.8f, 1.04f);
 		solarRadii = RandomInRange(0.96f, 1.15f);
 		luminosity = RandomInRange(0.6f, 1.5f);
-		starBightness = RandomInRange(1.75f, 3.25f);
+		starBrightness = RandomInRange(1.75f, 3.25f);
 
 		transform.Scale = glm::vec3(solarRadii, solarRadii, solarRadii);
 		starColor = glm::mix(glm::vec3(1.0f, 0.9568f, 0.91765f),
@@ -107,7 +107,7 @@ void Star::Generate()
 		solarMass = RandomInRange(0.45f, 0.8f);
 		solarRadii = RandomInRange(0.7f, 0.96f);
 		luminosity = RandomInRange(0.08f, 0.6f);
-		starBightness = RandomInRange(1.5f, 3.0f);
+		starBrightness = RandomInRange(1.5f, 3.0f);
 
 		transform.Scale = glm::vec3(solarRadii, solarRadii, solarRadii);
 		starColor = glm::mix(glm::vec3(1.0f, 0.82353f, 0.63137f),
@@ -118,7 +118,7 @@ void Star::Generate()
 		solarMass = RandomInRange(0.08f, 0.45f);
 		solarRadii = RandomInRange(0.03f, 0.7f);
 		luminosity = RandomInRange(0.01f, 0.08f);
-		starBightness = RandomInRange(1.0f, 2.5f);
+		starBrightness = RandomInRange(1.0f, 2.5f);
 
 		transform.Scale = glm::vec3(solarRadii, solarRadii, solarRadii);
 		starColor = glm::mix(glm::vec3(1.0f, 0.80000f, 0.43529f),

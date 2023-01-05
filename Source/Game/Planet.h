@@ -14,7 +14,7 @@ class Planet : public GameObject
 public:
 	Planet(Star* star);
 
-	virtual void Update(float deltaTime) override;
+	virtual void Update(float simulationTime) override;
 	virtual void Draw(Camera* camera) override;
 	virtual void ImGuiDraw() override;
 
@@ -26,6 +26,7 @@ private:
 	ShaderProgram* planetShader;
 
 	float timer = 0.0f;
+	float planetRotation = 0.0f;
 
 	// Statistics // 
 	std::string planetName;

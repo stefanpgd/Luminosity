@@ -16,6 +16,7 @@ public:
 
 private:
 	void GenerateSystem();
+	void ImGuiDebugDraw();
 
 	// System Objects // 
 	Star* star;
@@ -25,6 +26,6 @@ private:
 	std::string systemName;
 
 	// System Settings // 
-	float simulationSpeed = 1.0f;
+	float simulationSpeedModifier = 1.0f;
 	bool sidePerspective = false;
 };

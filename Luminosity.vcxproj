@@ -219,6 +219,7 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Source\Shaders\atmosphere.frag" />
     <None Include="Source\Shaders\color.frag" />
     <None Include="Source\Shaders\color.vert" />
     <None Include="Source\Shaders\gaussianBlur.frag" />
