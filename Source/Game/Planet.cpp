@@ -9,16 +9,18 @@
 #include <string>
 #include "Star.h"
 #include "Satellite.h"
-
+#include "Atmosphere.h"
 
 Planet::Planet(Star* star)
 {
 	this->star = star;
 
-	model = new Model("Assets/Models/Cube/Cube.gltf", &transform);
-	planetShader = new ShaderProgram("color.vert", "atmosphere.frag");
+	model = new Model("Assets/Models/Sphere/Sphere.gltf", &transform);
+	planetShader = new ShaderProgram("color.vert", "planet.frag");
 
 	Generate();
+
+	atmosphere = new Atmosphere(this);
 }
 
 void Planet::Update(float simulationTime)
@@ -32,26 +34,24 @@ void Planet::Update(float simulationTime)
 
 	transform.Position = glm::vec3(x, y, z);
 	transform.Rotation = glm::vec3(0.0f, planetRotation, 0.0f);
+
+	atmosphere->Update(simulationTime);
 }
 
 
 void Planet::Draw(Camera* camera)
 {
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	glFrontFace(GL_CW);
-
-	glDisable(GL_CULL_FACE);
-
 	planetShader->Bind();
 	planetShader->SetMat4("VPMatrix", camera->GetViewProjectionMatrix());
-	planetShader->SetVec3("color", planetColor);
 	planetShader->SetVec3("cameraPosition", camera->GetPosition());
 	planetShader->SetVec3("starColor", star->GetColor());
+	planetShader->SetVec3("color", planetColor);
 	planetShader->SetFloat("radius", earthRadii);
 	planetShader->SetVec3("sphereOrigin", transform.Position);
 
 	model->Draw(planetShader);
+
+	atmosphere->Draw(camera);
 }
 
 void Planet::ImGuiDraw() {}

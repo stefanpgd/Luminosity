@@ -1,13 +1,12 @@
 #pragma once
 #include "GameObject.h"
-#include <vector>
 #include <glm/glm.hpp>
 
 class Model;
 class ShaderProgram;
 class Texture;
 class Star;
-class Satellite;
+class Atmosphere;
 
 class Planet : public GameObject
 {
@@ -22,10 +21,11 @@ private:
 	void Generate();
 
 	Star* star;
+	Atmosphere* atmosphere;
+
 	Model* model;
 	ShaderProgram* planetShader;
 
-	float timer = 0.0f;
 	float planetRotation = 0.0f;
 
 	// Statistics // 
