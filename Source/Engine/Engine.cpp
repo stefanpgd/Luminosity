@@ -3,7 +3,7 @@
 // Graphics 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "Graphics/Renderer.h"
+#include "../Graphics/Renderer.h"
 
 // STD
 #include <iostream>
@@ -15,12 +15,12 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 
-#include "Graphics/Model.h"
-#include "Graphics/Transform.h"
-#include "Graphics/ShaderProgram.h"
+#include "../Graphics/Model.h"
+#include "../Graphics/Transform.h"
+#include "../Graphics/ShaderProgram.h"
 #include "Camera.h"
 
-#include "Game/GameManager.h"
+#include "../Game/GameManager.h"
 
 static void GLFWErrorCallback(int error, const char* description)
 {

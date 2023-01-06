@@ -1,8 +1,8 @@
 #include "GameManager.h"
 #include "GameObject.h"
-#include "../Camera.h"
+#include "../Engine/Camera.h"
+#include "../Engine/Utilities.h"
 
-#include "../Utilities.h"
 #include "StarSystem.h"
 
 GameManager::GameManager(GLFWwindow* window, unsigned int windowWidth, unsigned int windowHeight)

@@ -4,7 +4,7 @@
 #include "../Graphics/Model.h"
 #include "../Graphics/ShaderProgram.h"
 #include "../Graphics/Texture.h"
-#include "../Utilities.h"
+#include "../Engine/Utilities.h"
 #include <imgui.h>
 #include <string>
 #include "Star.h"
@@ -41,7 +41,7 @@ void Planet::Draw(Camera* camera)
 	glCullFace(GL_BACK);
 	glFrontFace(GL_CW);
 
-	//glDisable(GL_CULL_FACE);
+	glDisable(GL_CULL_FACE);
 
 	planetShader->Bind();
 	planetShader->SetMat4("VPMatrix", camera->GetViewProjectionMatrix());

@@ -1,6 +1,6 @@
 #pragma once
 #include "../Graphics/Transform.h"
-#include "../Camera.h"
+#include "../Engine/Camera.h"
 
 class GameObject
 {
