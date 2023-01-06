@@ -28,6 +28,16 @@ glm::vec3& Camera::GetPosition()
 	return position;
 }
 
+float Camera::GetNearClip()
+{
+	return nearClip;
+}
+
+float Camera::GetFarClip()
+{
+	return farClip;
+}
+
 void Camera::ProcessInput(float deltaTime)
 {
 	float speed = cameraMovespeed * deltaTime;

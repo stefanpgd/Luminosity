@@ -12,6 +12,8 @@ public:
 
 	glm::mat4& GetViewProjectionMatrix();
 	glm::vec3& GetPosition();
+	float GetNearClip();
+	float GetFarClip();
 
 private:
 	void ProcessInput(float deltaTime);
