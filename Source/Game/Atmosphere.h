@@ -22,5 +22,11 @@ private:
 	ShaderProgram* atmosphereShader;
 
 	float atmosphereRadius;
-	glm::vec3 atmosphereColor;
+	float atmosphereDensity = 0.2f;
+	float bloomIntensity = 0.1f;
+	float cutoff = 0.12f;
+	float max = 1.0f;
+
+	glm::vec3 atmosphereColor = glm::vec3(1.0f, 1.0f, 1.0f);
+	glm::vec3 atmosphereColor2 = glm::vec3(1.0f, 1.0f, 1.0f);
 };

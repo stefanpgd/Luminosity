@@ -28,6 +28,8 @@ Renderer::Renderer(const std::string& windowName)
 	}
 
 	glViewport(0, 0, windowWidth, windowHeight);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	sceneBuffer = new Framebuffer(windowWidth, windowHeight, true, 2);
 	postProcessor = new PostProcessor(windowWidth, windowHeight);
